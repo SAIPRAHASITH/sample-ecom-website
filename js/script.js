@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productHTML += `
                 <div class="product-card">
                     <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
+                    <h3 id="name">${product.name}</h3>
                     <p>$${product.price.toFixed(2)}</p>
                     <a href="product-details.html?id=${product.id}" class="btn">View Details</a>
                 </div>
