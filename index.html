@@ -8,6 +8,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K993HT7X');</script>
 <!-- End Google Tag Manager -->
+    <script>
+        window.onload=()=>{
+            window.dataLayer=window.dataLayer||[];
+            window.dataLayer.push({
+                "event":"Page View",
+                "Page":{
+                    "pageName":"Home",
+                }
+            });
+        };
+    </script>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced E-commerce</title>
@@ -29,7 +40,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><a href="products.html"id="select">Products</a></li>
                 <li><a href="about.html"id="select">About</a></li>
                 <li><a href="contact.html"id="select">Contact</a></li>
-                <li><a href="cart.html" class="cart-link"id="select">>Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="cart.html" class="cart-link"id="select">Cart (<span id="cart-count">0</span>)</a></li>
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
             </ul>
