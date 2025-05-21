@@ -1,15 +1,12 @@
 const products = [
-    { id: 1, name: "Product 1", price: 10.99, image: "https://picsum.photos/id/1018/200/200", description: "This is a description of Product 1." , type:"Clothing"},
-    { id: 2, name: "Product 2", price: 12.99, image: "https://picsum.photos/id/1015/200/200", description: "This is a description of Product 2.", type:"Mobile" },
-    { id: 3, name: "Product 3", price: 9.99, image: "https://picsum.photos/id/1016/200/200", description: "This is a description of Product 3.", type:"Furniture" },
-    { id: 4, name: "Product 4", price: 15.99, image: "https://picsum.photos/id/1019/200/200", description: "This is a description of Product 4.", type:"Sports" },
-    { id: 5, name: "Product 5", price: 8.99, image: "https://picsum.photos/id/1020/200/200", description: "This is a description of Product 5." , type:"Electronics"}
-
+    { id: 1, name: "Product 1", price: 10.99, image: "https://picsum.photos/id/1018/200/200", description: "This is a description of Product 1.", type: "Clothing" },
+    { id: 2, name: "Product 2", price: 12.99, image: "https://picsum.photos/id/1015/200/200", description: "This is a description of Product 2.", type: "Mobile" },
+    { id: 3, name: "Product 3", price: 9.99, image: "https://picsum.photos/id/1016/200/200", description: "This is a description of Product 3.", type: "Furniture" },
+    { id: 4, name: "Product 4", price: 15.99, image: "https://picsum.photos/id/1019/200/200", description: "This is a description of Product 4.", type: "Sports" },
+    { id: 5, name: "Product 5", price: 8.99, image: "https://picsum.photos/id/1020/200/200", description: "This is a description of Product 5.", type: "Electronics" }
 ];
 
-
-
-// Function to dynamically generate product cards on the products page
+// Display product cards
 document.addEventListener("DOMContentLoaded", () => {
     const productGrid = document.getElementById("product-grid");
     if (productGrid) {
@@ -18,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productHTML += `
                 <div class="product-card">
                     <img src="${product.image}" alt="${product.name}">
-                    <h3 id="name">${product.name}</h3>
+                    <h3>${product.name}</h3>
                     <p>$${product.price.toFixed(2)}</p>
                     <a href="product-details.html?id=${product.id}" class="btn">View Details</a>
                 </div>
@@ -31,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
 });
 
-// Function to load product details from URL params on product-details.html
+// Load product details on product-details.html
 function loadProductDetails() {
     const productDetailsDiv = document.getElementById("product-details");
     if (productDetailsDiv) {
@@ -55,14 +52,16 @@ function loadProductDetails() {
     }
 }
 
+// Update cart count in navbar
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (document.getElementById("cart-count")?.textContent){
-        document.getElementById("cart-count").textContent = cart.length;
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        cartCount.textContent = cart.length;
     }
 }
 
-// Function to add products to the cart
+// Add product to cart and push to dataLayer
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const product = products.find(p => p.id === productId);
@@ -70,37 +69,38 @@ function addToCart(productId) {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     alert("Item added to cart!");
-    window.dataLayer=window.dataLayer || [];
+
+    // Push to GA4 Data Layer
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        "event":"add_to cart",
-        "ecommerce":{
-            "currency":"USD",
-            "items":[{
+        event: "add_to_cart",
+        ecommerce: {
+            currency: "USD",
+            value: product.price, // Optional total value
+            items: [{
                 item_id: product.id.toString(),
                 item_name: product.name,
+                item_category: product.type,
                 price: product.price,
-                type:product.type,
                 quantity: 1
-                
             }]
-            
         }
-    })
-    window.location.href = "cart.html";
+    });
 
+    // Redirect
+    window.location.href = "cart.html";
 }
 
-
-// Function to load and display checkout summary
+// Load checkout summary
 function loadCheckoutSummary() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const checkoutSummary = document.getElementById("checkout-summary");
 
+    if (!checkoutSummary) return;
+
     if (cart.length === 0) {
-        if(checkoutSummary?.innerHTML){
         checkoutSummary.innerHTML = "<p>Your cart is empty.</p>";
         return;
-        }
     }
 
     let summaryHTML = "<h2>Order Summary</h2>";
@@ -115,34 +115,25 @@ function loadCheckoutSummary() {
 
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     summaryHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
-    if(checkoutSummary?.innerHTML){
-    checkoutSummary.innerHTML = summaryHTML;}
+    checkoutSummary.innerHTML = summaryHTML;
 }
 
-// Call this function when the checkout page loads
-document.addEventListener("DOMContentLoaded", () => {
-    loadCheckoutSummary();
-    updateCartCount(); // Ensure the cart count is updated
-});
-
-// Function to place the order
+// Place the order
 function placeOrder() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (cart?.length === 0) {
+    if (cart.length === 0) {
         alert("Your cart is empty. Add items before placing an order.");
         return;
     }
 
-    // Show success alert
     alert("Order placed successfully!");
-
-    // Clear the cart after placing the order
     localStorage.removeItem("cart");
-
-    // Update cart count and total
     updateCartCount();
-
-    // Redirect to home page after order
     window.location.href = "index.html";
 }
 
+// Call on page load
+document.addEventListener("DOMContentLoaded", () => {
+    loadCheckoutSummary();
+    updateCartCount();
+});
