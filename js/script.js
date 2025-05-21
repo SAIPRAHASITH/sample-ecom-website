@@ -4,6 +4,7 @@ const products = [
     { id: 3, name: "Product 3", price: 9.99, image: "https://picsum.photos/id/1016/200/200", description: "This is a description of Product 3.", type:"Furniture" },
     { id: 4, name: "Product 4", price: 15.99, image: "https://picsum.photos/id/1019/200/200", description: "This is a description of Product 4." , type:"Sports"},
     { id: 5, name: "Product 5", price: 8.99, image: "https://picsum.photos/id/1020/200/200", description: "This is a description of Product 5." , type:"Electronics"}
+
 ];
 
 
