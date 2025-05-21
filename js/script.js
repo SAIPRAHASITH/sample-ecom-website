@@ -85,9 +85,7 @@ function addToCart(productId) {
                 quantity: 1
             }]
         }
-    });
-
-    
+    });   
 }
 
 // Load checkout summary
