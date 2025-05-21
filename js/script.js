@@ -87,8 +87,7 @@ function addToCart(productId) {
         }
     });
 
-    // Redirect
-    window.location.href = "cart.html";
+    
 }
 
 // Load checkout summary
