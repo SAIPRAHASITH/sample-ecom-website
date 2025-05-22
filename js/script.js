@@ -43,7 +43,7 @@ function loadProductDetails() {
                     <h1>${product.name}</h1>
                     <p>${product.description}</p>
                     <h3>$${product.price.toFixed(2)}</h3>
-                    <button onclick="addToCart(${product.id})" class="btn">Add to Cart</button>
+                    <button onclick="addToCart(${product.id}); add_to_cart(${product.id})" class="btn" >Add to Cart</button>
                 </div>
             `;
         } else {
@@ -122,3 +122,22 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCheckoutSummary();
     updateCartCount();
 });
+function add_to_cart(productId){
+    window.dataLayer=window.dataLayer || [];
+    const product = products.find(p => p.id === productId);
+     window.dataLayer.push({
+    "event": "add_to_cart",
+    "ecommerce": {
+        "currency": "USD",
+        "items": [{
+            item_id: product.id.toString(),
+            item_name: product.name,
+            price: product.price,
+            item_category: product.type,  // More standard than "type"
+            quantity: 1
+        }]
+    }
+});
+
+    
+}
