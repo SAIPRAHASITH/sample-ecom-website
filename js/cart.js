@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "event":"begin_checkout",
          "ecommerce":{
              "currency": "USD",
-             "value":total.toFixed(2),
+             "value":total.toFixed(2) ,
               "items":cart,
          }
     })
