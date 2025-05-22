@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartItems.innerHTML = cartHTML;
     document.getElementById("cart-total").textContent = total.toFixed(2);
-    document.getElementById("begin_checkout").addEventListner('click', function (){
+    document.getElementById("begin_checkout").addEventListener('click', function (){
     window.dataLayer=window.dataLayer || [];
     window.dataLayer.push({
         "event":"begin_checkout",
