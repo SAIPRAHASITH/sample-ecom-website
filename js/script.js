@@ -44,6 +44,7 @@ function loadProductDetails() {
                     <p>${product.description}</p>
                     <h3>$${product.price.toFixed(2)}</h3>
                     <button onclick="addToCart(${product.id}); add_to_cart(${product.id})" class="btn"  id="add_to_cart">Add to Cart</button>
+                    
                 </div>
             `;
         } else {
