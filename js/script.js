@@ -40,9 +40,9 @@ function loadProductDetails() {
             window.onload=()=>{
                 window.dataLayer=window.dataLayer || [];
                 window.dataLayer.push({
-                    event:"view_item",
-                    ecommerce:{
-                        currency:"USD",
+                    "event":"view_item",
+                    "ecommerce":{
+                        "currency":"USD",
                         items:[{
                             item_id:product.id,
                             item_name:product.name,
@@ -143,10 +143,10 @@ function add_to_cart(productId){
     window.dataLayer=window.dataLayer || [];
     const product = products.find(p => p.id === productId);
      window.dataLayer.push({
-    event: "add_to_cart",
-    ecommerce: {
-        currency: "USD",
-        items: [{
+    "event": "add_to_cart",
+    "ecommerce": {
+        "currency": "USD",
+        "items": [{
             item_id: product.id.toString(),
             item_name: product.name,
             item_price: product.price,
