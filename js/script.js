@@ -42,12 +42,13 @@ function loadProductDetails() {
                 window.dataLayer.push({
                     event:"view_item",
                     ecommerce:{
+                        currency:"USD",
                         items:[{
                             item_id:product.id,
                             item_name:product.name,
                             item_category:product.type,
                             item_price:product.price,
-                            currency:"USD"
+                            
                         }]
                     }
                 })
@@ -142,13 +143,13 @@ function add_to_cart(productId){
     window.dataLayer=window.dataLayer || [];
     const product = products.find(p => p.id === productId);
      window.dataLayer.push({
-    "event": "add_to_cart",
-    "ecommerce": {
-        "currency": "USD",
-        "items": [{
+    event: "add_to_cart",
+    ecommerce: {
+        currency: "USD",
+        items: [{
             item_id: product.id.toString(),
             item_name: product.name,
-            price: product.price,
+            item_price: product.price,
             item_category: product.type,  // More standard than "type"
             quantity: 1
         }]
