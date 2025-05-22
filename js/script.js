@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>$${product.price.toFixed(2)}</p>
                     <a href="product-details.html?id=${product.id}" class="btn">View Details</a>
                 </div>
-            ` ;
+            `  ;
         });
         productGrid.innerHTML = productHTML;
     }
