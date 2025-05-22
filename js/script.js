@@ -69,7 +69,7 @@ function addToCart(productId) {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     alert("Item added to cart!");
-    window.location.href = "cart.html";
+  
 
 
 
