@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productHTML += `
                 <div class="product-card">
                     <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
+                    <h3 id="name">${product.name}</h3>
                     <p>$${product.price.toFixed(2)}</p>
                     <a href="product-details.html?id=${product.id}" class="btn">View Details</a>
                 </div>
@@ -69,23 +69,11 @@ function addToCart(productId) {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     alert("Item added to cart!");
+    window.location.href = "cart.html";
 
-    // Push to GA4 Data Layer
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        event: "add_to_cart",
-        ecommerce: {
-            currency: "USD",
-            value: product.price, // Optional total value
-            items: [{
-                item_id: product.id.toString(),
-                item_name: product.name,
-                item_category: product.type,
-                price: product.price,
-                quantity: 1
-            }]
-        }
-    });   
+
+
+    
 }
 
 // Load checkout summary
