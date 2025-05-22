@@ -44,7 +44,7 @@ function loadProductDetails() {
                     "ecommerce":{
                         "currency":"USD",
                         items:[{
-                            item_id:product.id,
+                            item_id:product.id.toString(),
                             item_name:product.name,
                             item_category:product.type,
                             item_price:product.price,
