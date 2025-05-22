@@ -37,6 +37,21 @@ function loadProductDetails() {
         const product = products.find(p => p.id === parseInt(productId));
 
         if (product) {
+            window.onload=()=>{
+                window.dataLayer=window.dataLayer || [];
+                window.dataLayer.push({
+                    event:"view_item",
+                    ecommerce:{
+                        item:[{
+                            item_id:product.id,
+                            item_name:product.name,
+                            item_category:product.type,
+                            item_price:product.price,
+                            currency:"USD"
+                        }]
+                    }
+                })
+            }
             productDetailsDiv.innerHTML = `
                 <img src="${product.image}" alt="${product.name}" class="product-detail-img">
                 <div class="product-detail-info">
