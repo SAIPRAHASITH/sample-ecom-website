@@ -42,7 +42,7 @@ function loadProductDetails() {
                 window.dataLayer.push({
                     event:"view_item",
                     ecommerce:{
-                        item:[{
+                        items:[{
                             item_id:product.id,
                             item_name:product.name,
                             item_category:product.type,
