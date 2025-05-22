@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartItems = document.getElementById("cart-items");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(cart);
     let cartHTML = "";
     let total = 0;
 
