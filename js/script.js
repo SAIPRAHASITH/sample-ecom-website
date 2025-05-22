@@ -70,7 +70,7 @@ function loadProductDetails() {
 }
 
 // Update cart count in navbar
-function updateCartCount() {
+export function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartCount = document.getElementById("cart-count");
     if (cartCount) {
