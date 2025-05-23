@@ -147,13 +147,18 @@ function placeOrder() {
             window.dataLayer=window.dataLayer || [];
             window.dataLayer.push({
                 "event":"purchase",
+                "ecommerce":{
                 "transaction_id":"T_12345",
                 "value":total.toFixed(2),
+                 "tax":3.60
+                 "shipping": 5.99, 
+                 "discount": 2.22,   
                 "currency":"USD",
                 "coupon":"SUMMER_SALE",
                 "items":cart,
                                       
-            })
+            }
+            }    )
         },3000);
     }
     
