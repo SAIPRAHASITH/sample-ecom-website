@@ -143,10 +143,6 @@ function placeOrder() {
         alert("Your cart is empty. Add items before placing an order.");
         return;
     }
-
-   
-
-  
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         "event": "purchase",
