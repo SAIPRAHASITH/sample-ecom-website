@@ -123,7 +123,7 @@ function loadCheckoutSummary() {
         window.dataLayer.push({
             "event":"begin_checkout",
             "ecommerece":{
-                "value":total,
+                "value":total.toFixed(2),
                  "currency":"USD",
                   "items":cart,
             }
