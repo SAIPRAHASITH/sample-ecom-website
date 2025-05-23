@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cartItems.innerHTML = cartHTML;
     document.getElementById("cart-total").textContent = total.toFixed(2);
     document.getElementById("begin_checkout").addEventListener('click', function (){
+    window.onload=()=>{    
     window.dataLayer=window.dataLayer || [];
     window.dataLayer.push({
         "event":"begin_checkout",
@@ -32,6 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
               "items":cart,
          }
     })
-})
+}
   
 });
