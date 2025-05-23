@@ -5,6 +5,7 @@ const products = [
     { id: 4, name: "Product 4", price: 15.99, image: "https://picsum.photos/id/1019/200/200", description: "This is a description of Product 4.", type: "Sports" },
     { id: 5, name: "Product 5", price: 8.99, image: "https://picsum.photos/id/1020/200/200", description: "This is a description of Product 5.", type: "Electronics" }
 ];
+let total=0;
 
 // Display product cards
 document.addEventListener("DOMContentLoaded", () => {
@@ -115,7 +116,7 @@ function loadCheckoutSummary() {
         `;
     });
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
+     total = cart.reduce((sum, item) => sum + item.price, 0);
     summaryHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
     checkoutSummary.innerHTML = summaryHTML;
     window.onload = () => {
@@ -141,6 +142,21 @@ function placeOrder() {
         alert("Your cart is empty. Add items before placing an order.");
         return;
     }
+    window.onload=()=>{
+        setTimeout(()=>{
+            window.dataLayer=window.dataLayer || [];
+            window.dataLayer.push({
+                "event":"purchase",
+                "transaction_id":"T_12345",
+                "value":total.toFixed(2),
+                "currency":"USD",
+                "coupon":"SUMMER_SALE",
+                "items":cart,
+                                      
+            })
+        },3000);
+    }
+    
 
     alert("Order placed successfully!");
     localStorage.removeItem("cart");
