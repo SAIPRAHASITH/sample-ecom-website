@@ -10,7 +10,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
      <script>
          window.onload=()=>{
-        window.dataLayer=window.dataLayer || []
+     setTimeOut(
+         window.dataLayer=window.dataLayer || []
         window.dataLayer.push({
             "event":"Page View",
             "Page":{
@@ -18,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 "pageType":"html"
                 
             }
-        })
+        }),2000);
          }
     </script>
   
