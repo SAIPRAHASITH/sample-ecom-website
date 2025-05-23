@@ -163,7 +163,7 @@ function placeOrder() {
      alert("Order placed successfully!");
     localStorage.removeItem("cart");
     updateCartCount();
-    window.location.href = "index.html";
+    // window.location.href = "index.html";
     
 
   
