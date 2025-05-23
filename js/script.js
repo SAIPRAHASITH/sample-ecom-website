@@ -163,10 +163,10 @@ function placeOrder() {
     }
     
 
-    alert("Order placed successfully!");
+    setTimeout(()=>{alert("Order placed successfully!");
     localStorage.removeItem("cart");
     updateCartCount();
-    window.location.href = "index.html";
+    window.location.href = "index.html";},5000);
 }
 
 // Call on page load
