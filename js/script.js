@@ -143,7 +143,7 @@ function placeOrder() {
         return;
     }
 
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+   
 
   
     window.dataLayer = window.dataLayer || [];
