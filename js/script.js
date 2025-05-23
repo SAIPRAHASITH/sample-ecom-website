@@ -122,7 +122,7 @@ function loadCheckoutSummary() {
         window.dataLayer=window.datalayer || [];
         window.dataLayer.push({
             "event":"begin_checkout",
-            "ecommerece":{
+            "ecommerce":{
                 "value":total.toFixed(2),
                  "currency":"USD",
                   "items":cart,
