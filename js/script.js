@@ -120,7 +120,7 @@ function loadCheckoutSummary() {
     summaryHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
     checkoutSummary.innerHTML = summaryHTML;
     window.onload = () => {
-   
+   setTimeout(()=>{
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             "event": "begin_checkout",
@@ -130,7 +130,7 @@ function loadCheckoutSummary() {
                 "items": cart
             }
         });
-   
+   },2000);
 };
 
 }
@@ -143,7 +143,7 @@ function placeOrder() {
         return;
     }
     window.onload=()=>{
-        setTimeout(()=>{
+ 
             window.dataLayer=window.dataLayer || [];
             window.dataLayer.push({
                 "event":"purchase",
@@ -159,7 +159,7 @@ function placeOrder() {
                                       
             }
             }    )
-        },4000);
+       ;
     }
     
 
