@@ -159,14 +159,14 @@ function placeOrder() {
                                       
             }
             }    )
-        },3000);
+        },2000);
     }
     
 
     setTimeout(()=>{alert("Order placed successfully!");
     localStorage.removeItem("cart");
     updateCartCount();
-    window.location.href = "index.html";},5000);
+    window.location.href = "index.html";},1000);
 }
 
 // Call on page load
