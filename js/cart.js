@@ -21,15 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
     cartItems.innerHTML = cartHTML;
     document.getElementById("cart-total").textContent = total.toFixed(2);
     updateCartCount();
-    window.onload=()=>{ 
-        window.dataLayer=window.dataLayer || [];
-        window.dataLayer.push(
-            { "event":"begin_checkout", 
-             "ecommerce":{ 
-                           "currency": "USD", 
-                            "value":total.toFixed(2) , 
-                            "items":cart, 
-                         } 
-            }
-        )
-});
+  );
