@@ -107,32 +107,33 @@ function loadCheckoutSummary() {
     }
 
     let summaryHTML = "<h2>Order Summary</h2>";
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         summaryHTML += `
             <div class="checkout-item">
                 <h3>${item.name}</h3>
-                <p>Price: $${item.price.toFixed(2)}</p>
+                <p>Price: $${Number(item.price).toFixed(2)}</p>
+
+                <button class="btn remove-btn" onclick="removeFromCart(${index})">Remove</button>
             </div>
         `;
     });
 
-     total = cart.reduce((sum, item) => sum + item.price, 0);
-    summaryHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
+    total = cart.reduce((sum, item) => sum + item.price, 0);
+    summaryHTML += `<h3>Total: $${Number(total).toFixed(2)}</h3>`;
+
     checkoutSummary.innerHTML = summaryHTML;
-    window.onload = () => {
-   setTimeout(()=>{
+
+    setTimeout(() => {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             "event": "begin_checkout",
             "ecommerce": {
-                "value": total.toFixed(2),
+               "value": Number(total).toFixed(2),
                 "currency": "USD",
                 "items": cart
             }
         });
-   },2000);
-};
-
+    }, 2000);
 }
 
 // Place the order
@@ -190,4 +191,27 @@ function add_to_cart(productId){
 });
 
     
+}
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const removedItem = cart.splice(index, 1)[0]; // Remove the item from array
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    loadCheckoutSummary();
+
+    // Push remove_from_cart event to dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "event": "remove_from_cart",
+        "ecommerce": {
+            "currency": "USD",
+            "items": [{
+                item_id: removedItem.id.toString(),
+                item_name: removedItem.name,
+                item_category: removedItem.type,
+                item_price: removedItem.price,
+                quantity: 1
+            }]
+        }
+    });
 }
