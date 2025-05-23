@@ -142,32 +142,30 @@ function placeOrder() {
         alert("Your cart is empty. Add items before placing an order.");
         return;
     }
-    window.onload=()=>{
- 
-            window.dataLayer=window.dataLayer || [];
-            window.dataLayer.push({
-                "event":"purchase",
-                "ecommerce":{
-                "transaction_id":"T_12345",
-                "value":total.toFixed(2),
-                 "tax":3.60,
-                 "shipping": 5.99, 
-                 "discount": 2.22,   
-                "currency":"USD",
-                "coupon":"SUMMER_SALE",
-                "items":cart,
-                                      
-            }
-            });  
-    }
-     alert("Order placed successfully!");
-    localStorage.removeItem("cart");
-    updateCartCount();
-    // window.location.href = "index.html";
-    
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "event": "purchase",
+        "ecommerce": {
+            "transaction_id": "T_12345",
+            "value": parseFloat(total.toFixed(2)),
+            "tax": 3.60,
+            "shipping": 5.99,
+            "discount": 2.22,
+            "currency": "USD",
+            "coupon": "SUMMER_SALE",
+            "items": cart
+        }
+    });
+
+    alert("Order placed successfully!");
+    localStorage.removeItem("cart");
+    updateCartCount();
 }
+
 
 // Call on page load
 document.addEventListener("DOMContentLoaded", () => {
