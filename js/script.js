@@ -158,15 +158,15 @@ function placeOrder() {
                 "items":cart,
                                       
             }
-            }    )
-       ;
+            });  
     }
-    
-
-    setTimeout(()=>{alert("Order placed successfully!");
+     alert("Order placed successfully!");
     localStorage.removeItem("cart");
     updateCartCount();
-    window.location.href = "index.html";},1000);
+    window.location.href = "index.html";
+    
+
+  
 }
 
 // Call on page load
