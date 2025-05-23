@@ -151,7 +151,7 @@ function placeOrder() {
         "event": "purchase",
         "ecommerce": {
             "transaction_id": "T_12345",
-            "value": parseFloat(total.toFixed(2)),
+            "value": total.toFixed(2),
             "tax": 3.60,
             "shipping": 5.99,
             "discount": 2.22,
