@@ -118,18 +118,20 @@ function loadCheckoutSummary() {
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     summaryHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
     checkoutSummary.innerHTML = summaryHTML;
-    //  window.onload=()=>{
-    //     window.dataLayer=window.datalayer || [];
-    //     window.dataLayer.push({
-    //         "event":"begin_checkout",
-    //         "ecommerce":{
-    //             "value":total.toFixed(2),
-    //              "currency":"USD",
-    //               "items":cart,
-    //         }
+    window.onload = () => {
+    setTimeout(() => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            "event": "begin_checkout",
+            "ecommerce": {
+                "value": total.toFixed(2),
+                "currency": "USD",
+                "items": cart
+            }
+        });
+    }, 1000); 
+};
 
-    //     })
-    // }
 }
 
 // Place the order
