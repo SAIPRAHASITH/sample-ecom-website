@@ -204,9 +204,6 @@ function removeFromCart(index) {
   //   quantity: 1
   // }]
   //  });
-
-
-    //Push remove_from_cart event to dataLayer
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         "event": "remove_from_cart",
