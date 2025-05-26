@@ -236,7 +236,7 @@ function removeFromCart(index) {
           // Wait briefly, then navigate
           setTimeout(() => {
             window.location.href = shopNowLink.href;
-          }, 200); // adjust timing as needed
+          }, 2000); // adjust timing as needed
         });
       }
     });
