@@ -219,6 +219,7 @@ function removeFromCart(index) {
         }
     });
 }
+//ShopNow Click
  document.addEventListener('DOMContentLoaded', () => {
       const shopNowLink = document.querySelector('.shop-now-btn');
       if (shopNowLink) {
