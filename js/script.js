@@ -219,9 +219,10 @@ function removeFromCart(index) {
         }
     });
 }
-document.querySelector('.shop-now-btn').addEventListener('click',()=>{
-    window.dataLayer=window.dataLayer || [];
+document.querySelector('.shop-now-btn').addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        "event":"shop_Now";
-    })
-})
+        "event": "shop_Now"
+    });
+});
+
