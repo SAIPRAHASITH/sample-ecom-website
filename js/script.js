@@ -219,10 +219,23 @@ function removeFromCart(index) {
         }
     });
 }
-document.querySelector('.shop-now-btn').addEventListener('click', () => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        "event": "shop_Now"
-    });
-});
+ document.addEventListener('DOMContentLoaded', () => {
+      const shopNowLink = document.querySelector('.shop-now-btn');
+      if (shopNowLink) {
+        shopNowLink.addEventListener('click', (e) => {
+          // Optional: delay navigation to ensure dataLayer is pushed
+          e.preventDefault(); // prevent immediate navigation
 
+          // Push event into dataLayer
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "shop_Now"
+          });
+
+          // Wait briefly, then navigate
+          setTimeout(() => {
+            window.location.href = shopNowLink.href;
+          }, 200); // adjust timing as needed
+        });
+      }
+    });
