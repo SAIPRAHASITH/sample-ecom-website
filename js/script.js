@@ -206,7 +206,7 @@ function removeFromCart(index) {
   //  });
 
 
-    Push remove_from_cart event to dataLayer
+    //Push remove_from_cart event to dataLayer
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         "event": "remove_from_cart",
