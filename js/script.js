@@ -194,20 +194,31 @@ function removeFromCart(index) {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     loadCheckoutSummary();
+    gtag('event', 'remove_from_cart', {
+  currency: "USD",
+  items: [{
+    item_id: removedItem.id.toString(),
+    item_name: removedItem.name,
+    item_category: removedItem.type,
+    price: removedItem.price,
+    quantity: 1
+  }]
+   });
+
 
     // Push remove_from_cart event to dataLayer
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        "event": "remove_from_cart",
-        "ecommerce": {
-            "currency": "USD",
-            "items": [{
-                item_id: removedItem.id.toString(),
-                item_name: removedItem.name,
-                item_category: removedItem.type,
-                item_price: removedItem.price,
-                quantity: 1
-            }]
-        }
-    });
+    // window.dataLayer = window.dataLayer || [];
+    // window.dataLayer.push({
+    //     "event": "remove_from_cart",
+    //     "ecommerce": {
+    //         "currency": "USD",
+    //         "items": [{
+    //             item_id: removedItem.id.toString(),
+    //             item_name: removedItem.name,
+    //             item_category: removedItem.type,
+    //             item_price: removedItem.price,
+    //             quantity: 1
+    //         }]
+    //     }
+    // });
 }
